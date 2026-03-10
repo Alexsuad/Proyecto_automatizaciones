@@ -1,0 +1,8 @@
+# File: .gitignore
+# Propósito: Excluir basura técnica del control de versiones
+
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
