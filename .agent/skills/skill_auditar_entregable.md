@@ -4,7 +4,7 @@ description: Auditoría de calidad estricta para entregables. Verifica consisten
 ---
 # File: .agent/skills/skill_auditar_entregable.md
 # ──────────────────────────────────────────────────────────────────────
-# Propósito: Gate de calidad automatizado para aprobar o bloquear entregables del proyecto ZAC.
+# Propósito: Gate de calidad automatizado para aprobar o bloquear entregables del Proyecto_automatizaciones.
 # Rol: Auditor (Anti-vaguedad y control de calidad de fuentes sólidas).
 # ──────────────────────────────────────────────────────────────────────
 

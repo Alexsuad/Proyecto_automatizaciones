@@ -1,67 +1,55 @@
-**Opción activa:** TRANSPORTE  
-**Subnicho:** Pyme transportista 10–50 camiones (Zaragoza/Aragón)  
-**Dolor:** Viaje → Evidencia (POD/CMR/albarán) → Factura → Cobro (Doc-to-Cash)
-
+# File: output/bloque_1/06_competencia_y_benchmarking.md
 # ──────────────────────────────────────────────────────────────────────
-# Propósito: Competencia y Benchmarking vs ZAC.
-# Rol: Entregable de fase de Competencia y Estrategia (CONVIERTE)
+# Propósito: Análisis detallado de competidores, sustitutos y alternativas.
+# Rol: Base de benchmarking estratégico para posicionamiento B2B.
 # ──────────────────────────────────────────────────────────────────────
 
-## 1) Tipología de Competencia (Benchmarking CONVIERTE)
+# 06. COMPETENCIA Y BENCHMARKING
 
-| Nivel | Categoría Competitiva | Representante(s) | Nuestro Posicionamiento vs Ellos |
-|---|---|---|---|
-| **Alta** | ERP/TMS integrales y gigantes | Dashdoc, SAP TMS, M. Navision | No competimos en "cambiar la empresa". Somos un satélite ágil de rescate del facturado. |
-| **Media** | SaaS de eCMR y Última Milla | Track-POD, Igarle, Doceo | No competimos en ruteo o paquetería. Nos afincamos en el dolor estricto FTL interurbano y la conciliación contra orden de carga. |
-| **Baja** | No-Software (Status Quo) | WhatsApp + Drive + Punteo manual | El rival principal a desplazar. Se ofrece eliminar la complejidad operativa del tecleo manual de incidencias. |
+Este documento identifica y analiza a los actores que disputan el presupuesto operativo y la atención de las PYMEs de logística y transporte en España, bajo el prisma de nuestra propuesta de **Sistemas de Control Operativo (SCO) a medida**.
 
-## 2) Análisis de Competidores
+## 1. MAPA DE CAPTURA DE PRESUPUESTO Y ATENCIÓN
 
-### Nivel Alto (Dashdoc y Suites TMS)
-- **Qué es:** Soluciones integrales de gran calado que dominan la operativa de extremo a extremo (asignación, tacógrafo, finanzas).
-- **Diferenciales:** Unificación total, eCMR nativo en la UE, dashboards masivos.
-- **Huecos para ZAC:** Fricción de adopción significativa. La pyme transportista media le aterra cambiar el programa que la contable lleva usando 10 años. Precios empresariales inasumibles.
+Identificamos a todos los actores que resuelven una parte del problema o absorben recursos del cliente:
 
-### Nivel Medio (Track-POD, Igarle)
-- **Qué es:** Aplicaciones que digitalizan el cristal del móvil para recoger firmas e incidencias logísticas en reparto.
-- **Diferenciales:** Ergonomía móvil, geolocalización extrema y optimización de flotas en reparto capilar.
-- **Huecos para ZAC:** Están desconectados del ciclo "doc-to-cash" del subcontratista FTL. Muestran que el camión llegó, pero no concilian los sobrecostes del peaje extra para pasárselo a cobro al cliente.
+### A. SOFTWARE VERTICAL / SaaS (Last Mile)
+Plataformas enlatadas que resuelven ruteo y entrega.
+*   **Ejemplos:** *Track-POD, Beetrack, DispatchTrack*.
+*   **Impacto:** Capturan el presupuesto de digitalización de flota con una barrera de entrada de bajo coste (OPEX).
 
-### Nivel Bajo (Whatsapp + Administrativo manual)
-- **Qué es:** La ausencia de inversión tecnológica paliada por horas extras humanas.
-- **Diferenciales:** Inmediato de instalar, "gratis", el chofer ya sabe mandar audios.
-- **Huecos para ZAC:** Riesgo altísimo de pérdida documental, nula capacidad de escalar a partir de cierta cantidad de chóferes, y retraso financiero (el viaje está hecho pero no se cobra hasta que se concilia el papel destrozado).
+### B. SOFTWARE ESPECIALIZADO / ERP / TMS / WMS
+Sistemas de gestión que son la fuente de datos raíz.
+*   **Ejemplos:** *Odoo (Logística), SAP Business One, Igarle, Sage, Mecalux*.
+*   **Impacto:** Son el "centro de gravedad". Suelen ser rígidos y dejan huecos operativos entre departamentos que el cliente llena con humanos.
 
-## 3) Síntesis: Huecos del Mercado (Aprovechables para ZAC)
-- **Alergia al cambio de ERP:** Existe el espacio para una herramienta satélite que solo actúe como "puente" entre la calle y la facturación, sin interrumpir lo que ya funciona.
-- **Abandono del dolor Doc-to-Cash:** Muchos programas persiguen al camión en el mapa, pero pocos persiguen que la variación de tarifa se cruce bien contra el albarán sellado para poder facturar mañana.
-- **Micro-Pyme interurbana ignorada:** La tecnología buena se vende a las grandes flotas o a paqueteras (GLS, Seur). La Pyme de 15 camiones FTL sufre sin remedios intermedios.
+### C. CONSULTORAS TECNOLÓGICAS
+Firmas que venden proyectos de transformación digital.
+*   **Impacto:** Venden estrategia y grandes implementaciones. A menudo fuera del alcance presupuestario de una PYME Tier 2/3.
 
-## 4) Hipótesis + Cómo se valida
+### D. AGENCIAS DE AUTOMATIZACIÓN Y FREELANCERS
+Especialistas tácticos en herramientas No-Code/Low-Code.
+*   **Impacto:** Soluciones rápidas con n8n/Python. Riesgo de falta de robustez industrial y falta de contexto logístico profundo.
 
-- **[HIPÓTESIS]** Las suites TMS tipo Dashdoc tienen una fricción de adopción demasiado alta para pymes de 10–50 camiones, lo cual genera un hueco de mercado real.
-  - **[CÓMO SE VALIDA]** Solicitar demos/trials de Dashdoc y SAP TMS. Medir el tiempo de onboarding y el coste de licencia anual. Comparar con la capacidad financiera de una pyme tipo (facturación < 5M€/año).
+### E. EQUIPOS INTERNOS DE IT
+Desarrollos propios del cliente.
+*   **Impacto:** Compiten por la "soberanía" del sistema, pero suelen sufrir de lentitud cronificada y altos costes de mantenimiento.
 
-- **[HIPÓTESIS]** Las soluciones de última milla (Track-POD, Igarle) no resuelven el ciclo Doc-to-Cash interurbano FTL.
-  - **[CÓMO SE VALIDA]** Revisar la documentación oficial y pricing pages de Track-POD e Igarle. Verificar si ofrecen funcionalidad de conciliación albarán/factura o solo captura de POD.
+### F. PROCESOS MANUALES (The Real Rival / Status Quo)
+Excel, WhatsApp, pizarras y memoria humana de oficiales de tráfico.
+*   **Impacto:** El competidor más peligroso. Absorbe el tiempo de la plantilla y genera fugas de facturación masivas pero invisibles.
 
-- **[HIPÓTESIS]** El status quo manual (WhatsApp + Excel) genera pérdidas documentales y retrasos de cobro cuantificables.
-  - **[CÓMO SE VALIDA]** Entrevistas exploratorias con 3–5 gerentes de pymes objetivo. Medir: días medios entre entrega y factura, porcentaje de incidencias documentales por mes, y coste hora del administrativo dedicado a "punteo".
+## 2. COMPARATIVA DE PROPUESTA DE VALOR
 
-- **[HIPÓTESIS]** La pyme interurbana de 10–50 camiones (FTL) carece de soluciones intermedias entre el "no-software" y los ERP integrales.
-  - **[CÓMO SE VALIDA]** Búsqueda sistemática en marketplaces SaaS (Capterra, G2) filtrando por categoría TMS + precio < 500€/mes + funcionalidad doc-to-cash. Si los resultados son nulos o irrelevantes, la hipótesis se refuerza.
+| Actor | Alcance | Barrera para el Cliente | Nuestra Diferencia (SCO) |
+| :--- | :--- | :--- | :--- |
+| **SaaS Logístico** | Punto A a Punto B | Rigidez del producto | **Integración Backoffice (Doc-to-Cash)** |
+| **ERPs / TMS** | El Dato Raíz | Lentitud y Coste de Cambio | **Capa de Inteligencia Ligera (Semanas)** |
+| **Consultoras** | Estrategia/Teoría | Sobre-ingeniería y Coste | **Implementación "en el barro"** |
+| **Freelancers** | Tareas Tácticas | Falta de robustez/contexto | **Expertise Sectorial + Escabilidad** |
+| **Equipos Internos** | Personalizado | Lento de evolucionar | **Agilidad n8n + Visión Externa** |
+| **Status Quo** | Manual | Fugas de dinero y estrés | **Automatización Robusta y Escalamiento** |
 
----
-
-**Nota de Registro NotebookLM**
-- **notebook_title:** ZAC_Bloque_1_Competencia
-- **notebook_id:** 7aee3bc4-233d-4b2d-9941-04b53fa270ca
-
-**Registro (HITO)**
-- **hito_note_title:** HITO — 06_competencia_y_benchmarking.md
-- **hito_note_id:** 7899f2e4-281a-49f9-aa39-2a8ae59c95f8
-
-**Auditoría semántica (Gate 7)**
-- **auditoria_note_title:** AUDITORÍA SEMÁNTICA — 06_competencia_y_benchmarking.md
-- **auditoria_note_id:** 6d5178b4-edc6-49a5-883f-3f07756fb9ff
-- **fecha:** 2026-03-06
+## 3. CONCLUSIONES DE BENCHMARKING
+*   El mercado no está saturado de **servicios implementadores**. Hay exceso de "vendedores de software" y carencia de "arquitectos de flujos operativos".
+*   Incluso el software SaaS es un rival si el cliente cree que "con la app de ruteo ya está digitalizado". 
+*   **Veredicto:** Nuestra competencia es cualquier actor que prometa orden, pero el cliente nos elegirá cuando entienda que el orden real ocurre en la conciliación del dato administrativo, no solo en el mapa.

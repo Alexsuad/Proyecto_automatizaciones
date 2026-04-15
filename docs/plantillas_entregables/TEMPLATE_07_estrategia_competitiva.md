@@ -7,7 +7,7 @@
 # Rol: Entregable de fase de Competencia y Estrategia (CONVIERTE)
 # ──────────────────────────────────────────────────────────────────────
 
-*(Nota de uso: Utilizar siempre voz de equipo: "nosotros proponemos", "la iniciativa busca", "el equipo validará". Emplear lenguaje de negocio. Evitar terminología bélica y promesas absolutas).*
+*(Nota de uso: Utilizar siempre voz de equipo: "nosotros proponemos", "la iniciativa busca", "el equipo validará". Emplear lenguaje de negocio B2B. Evitar terminología bélica y promesas absolutas. **MANDATO ANTI-DERIVA:** Queda terminantemente prohibido formular la estrategia asumiendo que somos un "SaaS", un "Software enlatado" o una "Startup de producto masivo"; la estrategia debe reflejar una operadora de servicios de integración a medida).*
 
 ## 1) Posicionamiento Recomendado
 

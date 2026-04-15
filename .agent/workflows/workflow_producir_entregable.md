@@ -1,10 +1,12 @@
 ---
-description: Flujo operativo estándar para producir un entregable del cronograma CONVIERTE ZAC
+description: Flujo operativo estándar para producir un entregable del cronograma ProyectoAuto
 ---
 
-# Workflow — Producir Entregable (CONVIERTE / ZAC)
+# Workflow — Producir Entregable (Validación B2B)
 
-Este workflow describe el proceso completo desde la selección de un entregable hasta su aprobación final.
+> ⚠️ **[DEPRECADO PARA PRODUCCIÓN EN LOTE]**: Este workflow ha sido reemplazado por `WORKFLOW_VALIDACION_NEGOCIO.md` para la validación macro en cascada de todo el Bloque 1. Su uso queda relegado ÚNICAMENTE a la producción de anexos individuales o corrección puntual táctica de un solo archivo.
+
+Este workflow describe el proceso completo desde la selección de un entregable aislado hasta su aprobación final.
 
 ## Pre-requisito
 - La opción activa debe estar declarada y actualizada en `docs/OPCION_ACTIVA.md`.
@@ -16,7 +18,7 @@ Este workflow describe el proceso completo desde la selección de un entregable 
 Verificar que `docs/OPCION_ACTIVA.md` refleje el nicho, subnicho y dolor vigente. Todo el entregable debe alinearse a esta declaración.
 
 ### 2. Seleccionar entregable del cronograma
-Consultar `ZAC_INDEX_00.md` → Identificar el entregable en estado `TODO` o `IN_PROGRESS` del bloque correspondiente.
+Consultar `INDEX_MAESTRO.md` → Identificar el entregable en estado `TODO` o `IN_PROGRESS` del bloque correspondiente.
 
 ### 3. Decidir si requiere investigación
 Ejecutar el skill: `.agent/skills/skill_decidir_si_requiere_investigacion.md`
@@ -25,6 +27,14 @@ Ejecutar el skill: `.agent/skills/skill_decidir_si_requiere_investigacion.md`
 
 ### 4. Redactar con plantilla
 Usar la plantilla correspondiente de `docs/plantillas_entregables/TEMPLATE_0X.md`.
+
+**[DEPENDENCIAS DE IDENTIDAD OBLIGATORIAS]**
+Antes de redactar, el Agente **DEBE** ingerir en su contexto y priorizar sobre cualquier memoria de NotebookLM:
+1. `docs_base/PROYAUTO_DOC_A_DOSSIER_EMPRESARIAL.md` (Doc A - El proyecto).
+2. `docs_base/PROYAUTO_DOC_B_REALIDAD_INTERNA.md` (Doc B - Realidad Interna).
+3. `docs/ARQ_01_MARCO_RECTOR_REDACCION.md` (La Ley Anti-Deriva B2B).
+*Si falta este contexto, el Agente debe negarse a redactar.*
+
 Respetar obligatoriamente:
 - `docs/ESTILO_00_guia_tono_y_voz_equipo.md` (voz, tono, glosario)
 - `docs/OPCION_ACTIVA.md` (enfoque)
@@ -73,13 +83,13 @@ Ejecutar `.agent/skills/skill_notebooklm_registrar_entregable.md`.
 ```
 
 ### 9. Marcar READY_FOR_REVIEW
-Actualizar estado en `ZAC_INDEX_00.md`: `TODO` → `READY_FOR_REVIEW`.
+Actualizar estado en `INDEX_MAESTRO.md`: `TODO` → `READY_FOR_REVIEW`.
 
 ### 10. Aprobación del usuario
 El usuario revisa y escribe: `Aprobado: [nombre] (ruta del archivo)`.
 
 ### 11. Cerrar como DONE
-Actualizar estado en `ZAC_INDEX_00.md` → `DONE`.
+Actualizar estado en `INDEX_MAESTRO.md` → `DONE`.
 Registrar en la sección de log de cambios del índice.
 
 ---

@@ -1,58 +1,56 @@
-**Opción activa:** TRANSPORTE  
-**Subnicho:** Pyme transportista 10–50 camiones (Zaragoza/Aragón)  
-**Dolor:** Viaje → Evidencia (POD/CMR/albarán) → Factura → Cobro (Doc-to-Cash)
-
+# File: output/bloque_1/07_estrategia_competitiva.md
 # ──────────────────────────────────────────────────────────────────────
-# Propósito: Estrategia Competitiva de ZAC.
-# Rol: Entregable de fase de Competencia y Estrategia (CONVIERTE)
+# Propósito: Definición del posicionamiento, ventajas y enfoque comercial.
+# Rol: Guía de mercado para comunicación y ventas B2B.
 # ──────────────────────────────────────────────────────────────────────
 
-## 1) Posicionamiento Recomendado (Costes vs Diferenciación)
+# 07. ESTRATEGIA COMPETITIVA
 
-Para ZAC, la **Diferenciación** es el camino obligatorio.
-Entrar en liderazgo en costes nos arriesgaría a competir contra el "no-software" (WhatsApp), que tiene coste de 0€, o contra gigantes del TMS como Dashdoc que pueden abaratar módulos por escala.
+Este documento traza el perfil de identidad de **Proyecto_automatizaciones** como una empresa de servicios operacionales B2B a medida, diferenciándonos de la consultoría tradicional y del software enlatado.
 
-Nuestra diferenciación se basará en la **\"Invisibilidad Operativa (Fricción Cero)\"**. No les vendemos un programa donde tienen que entrar, cargar datos y configurar pantallas; les vendemos una automatización que recupera su dinero más rápido usando los correos y documentos que sus conductores ya generan.
+## 1. POSICIONAMIENTO ESTRATÉGICO
 
-## 2) Enfoque (Especialización vs Diversificación)
+Nuestra identidad no es "vendedora de licencias" ni "asesoría teórica". Se basa en un modelo de **Sistemas de Control Operativo (SCO) Implementados**.
 
-ZAC optará por la **Especialización** y la **Microsegmentación (Concentración)**.
-Intentar diversificar a paquetería de última milla, transitarios de aduanas o marítimo diluiría totalmente el valor algorítmico y nos pondría a competir contra Track-POD o ERPs portuarios. 
+### I. FASE DE ANÁLISIS: DIAGNÓSTICO PARA LA ACCIÓN
+No somos una consultora que entrega un PDF de 100 páginas. Realizamos una **fase estratégica obligatoria de entendimiento y diagnóstico breve** del proceso. Esta fase no es el entregable final; es la herramienta para diseñar una **solución funcional**.
+*   **Aclaración de Identidad:** No vendemos consultoría aislada; **hacemos el análisis de proceso como parte del servicio para terminar en una solución técnica implementada**.
 
-La concentración es absoluta: **Pymes logísticas terrestres interurbanas (FTL).** El software sabrá específicamente cruzar la órden de carga, el CMR manchado y el registro de peaje para armar la factura al cliente final sin tocar el volante.
+### II. FOCO EN EL "VÍA CRUCIS" ADMINISTRATIVO (DOC-TO-CASH)
+Nuestra estrategia competitiva ignora la guerra por la "Optimización de Rutas" y ataca el ciclo de facturación y conciliación:
+*   Automatización de la entrada de órdenes.
+*   Conciliación automática de albaranes firmados con facturación pro-forma.
+*   Reducción drástica del Lead Time entre el servicio y el cobro.
 
-## 3) Conclusión de Estrategia Competitiva (Híbrida)
-
-La matriz estratégica elegida es:
-**Diferenciación enfocada (Microsegmentación por Dolor Doc-To-Cash)**
-
-- No competimos por ser el software que controla toda la empresa de transporte.
-- No competimos por ser el GPS más preciso del camión.
-- Competimos silenciosamente por acortar mecánicamente de semanas a días el plazo entre que el chófer entrega el palé y la administración envía la factura al cliente.
-- Nuestro ángulo comercial frente al **Decisor Económico** (Dueño Pyme) será puramente financiero y de flujo de caja, eludiendo la venta como "tecnología". Para los perfiles de Influencer Operativo y Usuario Directo, los argumentos cambian — ver `docs/PERFIL_DECISOR.md`.
-
-## 4) Hipótesis + Cómo se valida
-
-- **[HIPÓTESIS]** La diferenciación por "Fricción Cero" (operar desde los correos existentes del cliente) resulta más atractiva para la pyme objetivo que una suite TMS tradicional.
-  - **[CÓMO SE VALIDA]** Piloto con 2–3 pymes: medir la tasa de adopción (% de la plantilla que usa el sistema sin formación adicional) a los 30 días. Objetivo: >80% de uso autónomo.
-
-- **[HIPÓTESIS]** La microsegmentación en pymes FTL interurbanas (10–50 camiones) ofrece un mercado suficiente en la región de Aragón para sostener la fase inicial.
-  - **[CÓMO SE VALIDA]** Consultar registros del CNAE (4941 - transporte de mercancías por carretera) en INE/IAF, filtrando por tamaño de flota en Zaragoza/Aragón. Si el universo supera las 200 pymes, la hipótesis se refuerza.
-
-- **[HIPÓTESIS]** El ángulo comercial puramente financiero ("recupera tu dinero antes") resulta más eficaz que el ángulo tecnológico ("digitaliza tu empresa") frente al gerente/dueño.
-  - **[CÓMO SE VALIDA]** Test A/B en las primeras conversaciones comerciales: preparar dos guiones de venta (uno financiero, uno tecnológico). Medir tasa de segunda reunión conseguida con cada enfoque.
+### III. SOBERANÍA TECNOLÓGICA (ANTIDOTO AL SaaS)
+Frente a la competencia de software de suscripción, nosotros implementamos en la infraestructura del cliente:
+*   **Cero Deuda Técnica:** El cliente posee su lógica (n8n, Python).
+*   **Escalamiento sin "Peajes":** Eliminamos el pago por volumen de transacciones que imponen los SaaS logísticos tradicionales.
 
 ---
 
-**Nota de Registro NotebookLM**
-- **notebook_title:** ZAC_Bloque_1_Competencia
-- **notebook_id:** 7aee3bc4-233d-4b2d-9941-04b53fa270ca
+## 2. MENSAJES QUE SÍ OCUPAR VS. MENSAJES A EVITAR
 
-**Registro (HITO)**
-- **hito_note_title:** HITO — 07_estrategia_competitiva.md
-- **hito_note_id:** 447a549d-8cec-4040-a368-4ab3050580d7
+| **MENSAJES A EVITAR (Saturados/Erróneos)** | **MENSAJES DIFERENCIADORES (Foco)** |
+| :--- | :--- |
+| "Somos una consultora tecnológica." | "Implementadores de Sistemas de Control Operativo." |
+| "Venta de plataforma SaaS de logística." | "Soluciones a medida sobre tu propio ERP." |
+| "Mejoramos tus procesos con IA." | "Reducción del ciclo Doc-to-Cash y fugas de datos." |
+| "Proyecto de transformación digital." | "Diagnóstico de procesos + Implementación técnica." |
 
-**Auditoría semántica (Gate 7)**
-- **auditoria_note_title:** AUDITORÍA SEMÁNTICA — 07_estrategia_competitiva.md
-- **auditoria_note_id:** 3307040d-aa4b-4086-b890-acd89b2cf863
-- **fecha:** 2026-03-06
+---
+
+## 3. FOCO INICIAL: PYMEs LOGÍSTICAS TIER 2/3
+Este mercado es el que más sufre la brecha entre el "Dato Teórico del ERP" y la "Realidad Manual de la Oficina". 
+*   **Punto de entrada:** Operadores logísticos de la Ribera del Ebro/Aragón que ya operan a gran escala pero siguen usando el binomio Excel-WhatsApp para su backoffice.
+
+---
+
+## 4. RIESGOS COMPETITIVOS Y MITIGACIÓN
+1.  **Rival de Presupuesto (ERP):** El cliente duda entre invertir en un módulo del ERP o en nosotros.
+    *   *Respuesta:* El ERP es el registro de historia; nosotros somos el **cerebro de la operativa diaria** que habla con el ERP.
+2.  **Rival Interno (IT):** El equipo de IT ve la automatización externa como intrusiva.
+    *   *Respuesta:* No venimos a sustituir el IT, venimos a **desatascar el backlog administrativo** con herramientas migeras (Low-Code/Python).
+
+## 5. CONCLUSIÓN ESTRATÉGICA
+Nuestro valor no reside en el análisis, sino en el **"Análisis + Máquina en Marcha"**. El cliente nos contrata para que su oficina de facturación funcione sola, no para que le digamos por qué no funciona.

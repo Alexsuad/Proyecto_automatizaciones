@@ -1,67 +1,63 @@
-**Opción activa:** TRANSPORTE  
-**Subnicho:** Pyme transportista 10–50 camiones (Zaragoza/Aragón)  
-**Dolor:** Viaje → Evidencia (POD/CMR/albarán) → Factura → Cobro (Doc-to-Cash)
-
+# File: output/bloque_1/08_curva_valor_vs_competencia.md
 # ──────────────────────────────────────────────────────────────────────
-# Propósito: Curva de Valor (Océano Azul / CONVIERTE) vs Competencia.
-# Rol: Entregable de fase de Competencia y Estrategia (CONVIERTE)
+# Propósito: Representación de la diferenciación estratégica (Curva de Valor).
+# Rol: Herramienta de visualización de posicionamiento frente a competidores.
 # ──────────────────────────────────────────────────────────────────────
 
-## 1) Ejes Generales de Competencia (Mercado Español)
+# 08. CURVA DE VALOR VS COMPETENCIA
 
-Se evalúan los siguientes ejes para comparar a los actores vigentes:
-1. **Precio / Coste Adopción** (Licencias puras y despliegue)
-2. **Capacidad Productiva / Funcionalidades** (Gestión perimetral de la empresa)
-3. **Curva de Aprendizaje / Fricción** (Tiempo necesario para enseñar a la plantilla)
-4. **Foco en Analítica y Control Financiero** (Dashboard final de márgenes)
-5. **Especialización Doc-To-Cash** (Resolución específica del cruce albarán/peaje vs orden de carga)
-6. **Agilidad Local Pyme** (Servicio y cercanía pre-configurada sin "hacer un máster")
+Este documento aplica el marco de la Estrategia del Océano Azul para trazar el perfil estratégico de **Proyecto_automatizaciones** frente a la competencia (SaaS, ERPs, Consultoras, Agencias de Automatización, Equipos Internos y Status Quo).
 
-## 2) Valoración de la Curva Narrada (1: Bajo, 5: Alto)
+## 1. FACTORES DE COMPETENCIA ACTUALIZADOS
 
-- **Competidor Alta (Suites Grandes TMS, ej. Dashdoc):** 
-  Su precio es ALTO (5), su barrera de aprendizaje es ALTA (5) y su nivel funcional es ALTO (5). Cubren todas las periferias empresariales, pero el despliegue es lento y forzoso.
-- **Competidor Media (SaaS última milla, ej. Track-POD):** 
-  Foco exhaustivo en GPS y mapa, pero su especialización financiera/doc-to-cash FTL es BAJA (2). Curva de adopción es MEDIA (3).
-- **Competidor Baja (Whatsapp / Nada):** 
-  Precio BAJO (1), fricción BAJA (1), analítica BAJA (1) y mitigación doc-to-cash NULA (1). 
+Definimos los vectores en los que el mercado actual captura presupuesto:
 
-### Posición de ZAC
-- **Precio/Coste Adopción:** MEDIO (3). Competimos por valor demostrado.
-- **Curva de Aprendizaje:** BAJO (1). Diferenciador nuclear: sin cambiar el software legacy del cliente, conectando con sus bandejas de correos. "Fricción Cero".
-- **Capacidad Productiva Periférica (Funcionalidades):** BAJO (1). Deliberadamente ignoraremos bolsas de carga, tacógrafos o flotas.
-- **Especialización Doc-to-Cash:** ALTO (5). Todo el bloque técnico del desarrollo estará al servicio de leer el albarán sellado, conciliar el coste y dictaminar facturación veloz.
+*   **Precio (OPEX):** Cuotas mensuales por licencia o transacción (SaaS).
+*   **Adaptabilidad:** Capacidad para ajustarse a procesos logísticos no estándar.
+*   **Velocidad de Despliegue:** Tiempo hasta la primera operación automatizada.
+*   **Integración Administrativa:** Conexión real con facturación y conciliación (Doc-to-Cash).
+*   **Soberanía del Dato:** Quién posee la lógica y los flujos finales (Cliente vs Proveedor).
+*   **Acompañamiento Operativo:** Nivel de implicación en el diseño final del proceso.
+*   **Robustez Industrial:** Estabilidad del sistema más allá de "scripts de fin de semana".
 
-## 3) Conclusión de Océano Azul para ZAC
+## 2. PUNTOS DE DIFERENCIACIÓN (Blue Ocean para SCO B2B)
 
-**Dónde ZAC debe sobresalir e innovar (Crear/Aumentar):**
-En la eliminación del error de "punteo manual" y la extracción rápida del dato crudo documental que frena la facturación mensual y asfixia a la Pyme.
+Aplicamos la matriz para definir el salto estratégico:
 
-**A qué no debemos dedicar recursos (Reducir/Eliminar):**
-Al desarrollo de plataformas de visualización complejas, controles de tacógrafo o aplicaciones de tracking satelital. Ese espacio está ocupado por empresas fondeadas con millones de euros e ingenieros C++. Nuestro terreno diferencial es el **flujo de caja administrativo** de la pyme.
+### ELIMINAR
+*   **Peajes por Volumen:** Licencias basadas en número de albaranes o envíos.
+*   **Consultoría Aislada:** No se vende diagnóstico sin implementación.
+*   **Dependencia del SaaS:** El cliente ya no está "atrapado" en un software enlatado.
 
-## 4) Hipótesis + Cómo se valida
+### REDUCIR
+*   **Deuda Técnica:** Reducimos la complejidad de integrar con el ERP del cliente.
+*   **Fricción del Usuario:** El sistema corre en segundo plano (IA + n8n).
 
-- **[HIPÓTESIS]** ZAC puede alcanzar la puntuación máxima (5/5) en Especialización Doc-to-Cash frente a competidores que puntúan 1–2 en ese eje.
-  - **[CÓMO SE VALIDA]** Análisis funcional de las 3 plataformas comparadas (Dashdoc, Track-POD, status quo manual): listar funcionalidades de conciliación albarán/factura. Si ninguna ofrece conciliación automática cruzada, la hipótesis se confirma.
+### ELEVAR
+*   **Foco Administrativo:** Elevamos la importancia del backoffice frente al seguimiento visual.
+*   **Adaptabilidad de Lógica:** No forzamos al cliente a trabajar "como el software quiere".
 
-- **[HIPÓTESIS]** La curva de aprendizaje de ZAC (puntuación 1 = mínima fricción) es sostenible sin formación presencial al cliente.
-  - **[CÓMO SE VALIDA]** En piloto: medir las horas de soporte técnico requeridas en los primeros 30 días. Objetivo: <4 horas de soporte total por cliente en onboarding.
-
-- **[HIPÓTESIS]** La deliberación de NO competir en funcionalidades periféricas (GPS, tacógrafo, bolsas de carga) no reduce la conversión comercial en el segmento objetivo.
-  - **[CÓMO SE VALIDA]** Encuesta a 10 gerentes/dueños de pymes FTL: preguntar si la ausencia de funcionalidades de tracking satelital es un factor de descarte. Si <20% lo menciona como bloqueante, la hipótesis se refuerza.
+### CREAR
+*   **Fase de Diagnóstico Integrada:** Análisis rápido como pasareea obligatoria al SCO.
+*   **Posesión Total del Sistema:** El cliente es dueño del código/flujos en su infraestructura.
 
 ---
 
-**Nota de Registro NotebookLM**
-- **notebook_title:** ZAC_Bloque_1_Competencia
-- **notebook_id:** 7aee3bc4-233d-4b2d-9941-04b53fa270ca
+## 3. PERFIL ESTRATÉGICO COMPARATIVO (Métricas Proporcionales)
 
-**Registro (HITO)**
-- **hito_note_title:** HITO — 08_curva_valor_vs_competencia.md
-- **hito_note_id:** 6b1f1ed2-3455-4f46-b12d-fc3f31ae8ea3
+| Factor | Software SaaS | ERP / TMS | Consultora | Equipo IT Interno | SCO B2B (Nuestra) |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Precio (OPEX)** | 8 (Alto) | 6 | 9 | 10 | **2 (Bajo)** |
+| **Adaptabilidad** | 2 | 4 | 7 | 10 | **10** |
+| **Velocidad** | 10 (Rápido) | 2 | 3 | 2 | **8** |
+| **Integración Backoffice** | 3 | 6 | 5 | 9 | **10** |
+| **Soberanía del Dato** | 1 | 4 | 5 | 8 | **10** |
+| **Robustez Industrial** | 10 | 10 | 6 | 8 | **9** |
 
-**Auditoría semántica (Gate 7)**
-- **auditoria_note_title:** AUDITORÍA SEMÁNTICA — 08_curva_valor_vs_competencia.md
-- **auditoria_note_id:** cc0cabb2-492f-41a0-9d9e-0ba0eac26711
-- **fecha:** 2026-03-06
+---
+
+## 4. CONCLUSIÓN DE POSICIONAMIENTO
+
+Nuestro valor diferencial no es "No ser X", sino ser el actor que ofrece la **velocidad de un SaaS con la personalización de un equipo interno**, eliminando el coste continuo de licencias y el riesgo de obsolescencia de la consultoría teórica.
+
+**El "Análisis del Proceso" es nuestra brújula, y la "Máquina Funcionando" es nuestro Producto Final.**

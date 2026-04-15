@@ -1,4 +1,4 @@
-# Decision Log (ZAC)
+# Decision Log (Sistema_ProyectoAuto)
 
 **Regla:** Toda decisión de nicho/pivote debe registrarse aquí **antes** de tocar `output/`.
 
@@ -19,7 +19,7 @@
 ### 2026-03-04 — Activación de opción TRANSPORTE (Doc-to-Cash por evidencia)
 - **Decisión:** Activar opción TRANSPORTE como única opción activa para `output/`.
 - **Contexto:** En exploración se evaluaron rutas (transporte vs transitarios). Se decide ejecutar el cronograma en el camino con dolor más universal y validable: evidencia → cobro.
-- **Evidencia NotebookLM:** ZAC_Bloque_1 / Auditoría Semántica Bloque 1 / d27db875-c0ac-458b-94e9-983166a53320
+- **Evidencia NotebookLM:** ProyAuto_Sector_Logistica / Auditoría Semántica Bloque 1 / d27db875-c0ac-458b-94e9-983166a53320
 - **Impacto en repo:** `output/` se alinea solo a Transporte. Comparativos y alternativas van a `exploracion/`.
 - **Siguiente paso:** Blindar Bloque 1 con validadores deterministas (scripts) y mantener entregables bajo gates.
 

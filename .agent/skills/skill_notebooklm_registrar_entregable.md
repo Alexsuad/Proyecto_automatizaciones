@@ -23,8 +23,8 @@ Crear una memoria organizada en el cuaderno respectivo cada vez que un entregabl
 2. **Registrar la Nota**:
    - Ejecuta la herramienta `mcp_notebooklm_note` con `action="create"`.
    - Asigna el contexto preparado al `content` de la nota y dale un `title` representativo.
-   - Pásale el `notebook_id` correcto (ej. el ID de ZAC_Bloque_1 u otro).
+   - Pásale el `notebook_id` correcto (ej. el ID de ProyAuto_Sector_Logistica u otro).
 
 3. **Output**:
    - Devuelve la confirmación de la acción y el `note_id`.
-   - Asegura la consistencia actualizando la columna correspondiente de NotebookLM en `ZAC_INDEX_00.md`.
+   - Asegura la consistencia actualizando la columna correspondiente de NotebookLM en `INDEX_MAESTRO.md`.
