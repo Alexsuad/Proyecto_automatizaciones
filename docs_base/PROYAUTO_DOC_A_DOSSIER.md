@@ -1,3 +1,9 @@
+# File: docs_base/PROYAUTO_DOC_A_DOSSIER.md
+# ──────────────────────────────────────────────────────────────────────
+# Propósito: Narrativa externa centrada en resultados y control operativo para pymes logísticas.
+# Rol: Dossier corporativo (Documento A) para comunicación y ventas.
+# ──────────────────────────────────────────────────────────────────────
+
 # DOSSIER EMPRESARIAL — Proyecto_automatizaciones
 
 ## Diseño e Implementación de Sistemas de Control Operativo a Medida
@@ -12,6 +18,8 @@
 **Proyecto_automatizaciones** es una empresa de servicios especializada en el **diseño e implementación de sistemas de control operativo, trazabilidad e integración**. Resolvemos problemas de eficiencia operativa convirtiendo procesos manuales fragmentados (Excel, correos, aprobaciones dispersas) en herramientas con reglas de validación claras y evidencia centralizada.
 
 No desarrollamos plataformas SaaS genéricas ni vendemos software estándar por licencia. Trabajamos como un equipo especializado en procesos que analiza la operación del cliente, identifica las reglas críticas que deben aplicarse y construye una solución robusta adaptada a su realidad. El foco inicial en logística responde a la experiencia operativa directa de los fundadores en ese sector, pero la metodología es aplicable a procesos con necesidades similares de control, validación e integración.
+
+La experiencia logística del equipo permite identificar qué debe implementarse, qué no conviene intervenir todavía y cuál es el nivel de solución adecuado en cada caso. El proyecto no parte de la tecnología como punto de salida, sino de la operación real del cliente. Por eso la intervención solo se propone cuando el proceso presenta un bloqueo real, medible y con impacto en el control, la trazabilidad o la continuidad operativa.
 
 ---
 
@@ -80,7 +88,7 @@ Consolidar datos dispersos en una vista clara para la dirección: qué operacion
 
 ## 7. Cómo trabajamos con el cliente
 
-El servicio se estructura en tres fases orientadas a demostrar resultados rápido y sin sobrecargar al cliente:
+El servicio se estructura en tres fases orientadas a demostrar resultados de forma progresiva y sin introducir más cambio del necesario en la operación del cliente. La lógica de trabajo no consiste en implantar por inercia, sino en intervenir primero donde el proceso ya muestra un bloqueo real y verificable.
 
 1. **Arranque guiado y diagnóstico del punto de bloqueo:** No programamos a ciegas. Identificamos primero dónde se frena exactamente el proceso y qué está causando el problema operativo antes de construir la solución técnica sobre un único proceso crítico. No vendemos informes; analizamos para intervenir con precisión.
 2. **Implementación del piloto:** Construimos y probamos el sistema con una muestra de datos reales antes de ponerlo en producción. El cliente ve el resultado antes de comprometerse con el proyecto completo.
@@ -108,6 +116,7 @@ El proyecto monetiza en dos momentos:
 ## 10. Diferenciación
 
 - **Experiencia directa en el sector:** El equipo conoce los procesos logísticos por haberlos gestionado. No es necesario explicar qué es un CMR, una DUA o cómo funciona la facturación de flete. Eso acelera las implementaciones y reduce errores de interpretación.
+- **Intervención proporcionada, no sobredimensionada:** La experiencia operativa del equipo permite distinguir entre una molestia de gestión y un proceso que ya requiere intervención real. Por eso no se propone más solución de la necesaria ni se fuerza una implementación antes de tiempo.
 - **Implementación, no diagnóstico:** El trabajo termina con una herramienta funcionando, no con un informe de recomendaciones. El análisis del proceso es una fase necesaria para llegar a la solución, no el producto final.
 - **Soberanía tecnológica:** Las soluciones se integran en la infraestructura del cliente, garantizando el control total sobre los datos y la lógica de negocio, sin dependencias de licencias externas por volumen de uso.
 - **Interfaces sencillas y adoptables:** Los sistemas se diseñan para ser usados por equipos operativos reales, sin formación técnica previa.

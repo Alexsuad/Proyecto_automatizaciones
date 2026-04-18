@@ -1,3 +1,9 @@
+# File: docs_base/PROYAUTO_DOC_B_REALIDAD_INTERNA.md
+# ──────────────────────────────────────────────────────────────────────
+# Propósito: Verdad completa y análisis de viabilidad, riesgos y estrategia interna.
+# Rol: Documento de control interno (Documento B) para toma de decisiones.
+# ──────────────────────────────────────────────────────────────────────
+
 # DOCUMENTO B — REALIDAD INTERNA Y MARCO DE ANÁLISIS
 
 ## Viabilidad estratégica y mercado — Complementario al Dossier Empresarial
@@ -37,12 +43,16 @@ Aunque externamente describimos el trabajo como "instalar control operativo", in
 
 Internamente usamos Python como lenguaje principal y soluciones con múltiples capas de lógica cuando la complejidad lo requiere. El valor estratégico no está solo en automatizar la ejecución, sino en la **capacidad de validación y detección de inconsistencias**. Por diseño, evitamos las "cajas negras" opacas en procesos críticos: el sistema debe ser explicable, dejar trazas (logs) de su actividad y contemplar puntos de intervención humana donde la automatización plena sea incierta o arriesgada. La tecnología es el medio para recuperar el control y la soberanía del dato, no para ocultar la lógica operativa.
 
+**Principio de intervención:** La iniciativa no parte de la idea de implantar una solución amplia desde el inicio, sino de identificar con precisión qué parte del proceso necesita intervención real, qué parte todavía no conviene tocar y cuál es el nivel de solución adecuado en cada caso. La implementación solo se justifica cuando existe un bloqueo operativo real, medible y económicamente relevante para el cliente.
+
 ---
 
 ## 4. Capacidades reales del equipo fundador
 
 **Conocimiento del sector:**  
 Los fundadores tienen más de 20 años de experiencia operativa en logística y comercio exterior (transporte terrestre, aduanas, coordinación de clientes y proveedores). Esto acelera el análisis de los procesos del cliente y reduce las interpretaciones erróneas habituales en proyectos de digitalización. No es necesario que el cliente explique qué es un CMR o cómo funciona la liquidación de un transitario.
+
+Esta experiencia sectorial no solo reduce la curva de aprendizaje. También permite tomar una decisión más importante: distinguir cuándo un problema requiere una intervención formal y cuándo todavía puede resolverse con una mejora limitada, focalizada y de baja fricción. Ese criterio de proporcionalidad forma parte del valor del servicio.
 
 **Capacidad técnica interna:**  
 El equipo puede desarrollar las soluciones sin subcontratar: backend, integraciones con sistemas existentes, automatizaciones y diseño de interfaces para usuario final. Esto da control sobre los tiempos, los costos y la calidad del trabajo entregado.
@@ -80,6 +90,10 @@ Las pymes logísticas se encuentran en una situación frecuente: sus sistemas co
 
 La oportunidad que identifica el proyecto está en ese espacio: un proveedor con conocimiento real del sector que puede diseñar e instalar sistemas adaptados al flujo específico del cliente, sin obligarle a reemplazar su infraestructura actual.
 
+En este marco, el valor diferencial no reside en añadir tecnología por sí sola, sino en conectar mejor operación, datos, validación y decisión en puntos donde hoy existe fricción real. La tesis no es “automatizar todo”, sino intervenir en los procesos donde la falta de control ya está afectando el cobro, el margen, el tiempo administrativo o la trazabilidad.
+
+En ese sentido, la oportunidad no está en vender interfaces llamativas o automatización genérica, sino en construir control operativo sobre datos, documentos y flujos que hoy están fragmentados. El valor aparece cuando la operación deja de depender de seguimiento manual disperso y gana capacidad de validación, trazabilidad y decisión.
+
 **Niveles de mercado:** El sector de la automatización se está partiendo en dos. Un nivel inferior de tareas simples y "wrappers" de IA con guerra de precios (commodity), y un nivel superior de integración real, control y validación de datos, y adopción operativa. Proyecto_automatizaciones se posiciona en este segundo nivel, donde el valor es el control y la responsabilidad operativa, no la automatización genérica.
 
 ---
@@ -99,8 +113,10 @@ La oportunidad que identifica el proyecto está en ese espacio: un proveedor con
 **Riesgo: el cliente quiere asesoría, no implementación.**  
 Es habitual que una pyme pida "que le revisen los procesos" sin llegar a contratar el desarrollo de un sistema. Si el proyecto cae en esa dinámica, trabaja sin cobrar por ello. La mitigación es ser claros desde el primer contacto: el trabajo entregable es un sistema funcionando, no un informe.
 
-**Riesgo: cada proyecto es totalmente único.**  
 Si no hay un núcleo técnico reutilizable, cada implementación consume el mismo esfuerzo que la anterior. El modelo no escala y los márgenes se deterioran. Es necesario invertir desde el inicio en construir componentes reutilizables (validaciones, conectores de datos, plantillas de tableros).
+
+**Riesgo: sobredimensionar la solución antes de validar el bloqueo real.**  
+Si el proyecto propone una intervención más amplia de lo que la operación necesita en ese momento, aumenta la fricción comercial, el riesgo de mala adopción y la percepción de complejidad innecesaria. La mitigación es mantener un criterio de intervención progresiva: primero resolver un punto crítico real, luego ampliar solo si la utilidad ya fue demostrada.
 
 **Riesgo: ciclos de venta B2B largos.**  
 En B2B, el tiempo entre el primer contacto y la firma de un proyecto puede extenderse semanas o meses. Si el proyecto no tiene flujo de caja mientras espera cierres, es un problema financiero real. El piloto corto, limitado y con baja fricción comercial es una herramienta para acortar ese ciclo: el cliente ve el resultado antes de comprometerse.
