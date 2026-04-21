@@ -1,7 +1,7 @@
 [project]
-name = "zac-proyecto"
+name = "proyecto_automatizaciones_logisticas"
 version = "0.1.0"
-description = "Add your description here"
+description = "Repositorio maestro para diseñar, validar y estructurar una app de acompañamiento al emprendedor, con core metodológico, casos de prueba sectoriales y trazabilidad arquitectónica."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = []

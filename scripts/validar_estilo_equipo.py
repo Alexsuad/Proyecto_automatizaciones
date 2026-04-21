@@ -55,8 +55,8 @@ def check_file(filepath: Path) -> Dict:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--bloque", required=True, help="Directorio del bloque a escanear")
-    parser.add_argument("--salida", required=True, help="Ruta del reporte resultante")
+    parser.add_argument("--bloque", required=True, help="Directorio del bloque a escanear (ej. cases/logistica/output/bloque_1)")
+    parser.add_argument("--salida", required=True, help="Ruta del reporte resultante (ej. cases/logistica/reports/ESTILO.md)")
     args = parser.parse_args()
     
     bloque_path = Path(args.bloque)

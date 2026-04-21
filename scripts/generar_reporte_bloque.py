@@ -29,13 +29,15 @@ def read_if_exists(path: Path) -> str:
     return "(No existe aún este reporte. Ejecuta primero los scripts previos.)"
 
 
-def build_report(bloque_path: Path) -> str:
+def build_report(bloque_path: Path, reports_dir: Path) -> str:
     md_files = sorted(bloque_path.glob("*.md"))
+    block_name = bloque_path.name  # Extrae 'bloque_1', 'bloque_2', etc.
 
     lines: List[str] = []
     lines.append("# REPORTE DE CIERRE — BLOQUE")
     lines.append("")
     lines.append(f"- **Bloque:** `{bloque_path.as_posix()}`")
+    lines.append(f"- **Nombre del bloque detectado:** `{block_name}`")
     lines.append(f"- **Cantidad de entregables (.md):** {len(md_files)}")
     lines.append("")
     lines.append("## 1) Entregables detectados")
@@ -44,14 +46,22 @@ def build_report(bloque_path: Path) -> str:
         lines.append(f"- {fp.name}")
     lines.append("")
 
+    # Buscar reportes en el directorio especificado usando el nombre dinámico
+    val_report_path = reports_dir / f"reporte_validacion_{block_name}.md"
+    drift_report_path = reports_dir / f"reporte_deriva_{block_name}.md"
+
     lines.append("## 2) Reporte de Validación Determinista")
     lines.append("")
-    lines.append(read_if_exists(Path("reports/reporte_validacion_bloque_1.md")))
+    lines.append(f"> Buscando en: `{val_report_path.as_posix()}`")
+    lines.append("")
+    lines.append(read_if_exists(val_report_path))
     lines.append("")
 
     lines.append("## 3) Reporte Anti-Deriva Editorial")
     lines.append("")
-    lines.append(read_if_exists(Path("reports/reporte_deriva_bloque_1.md")))
+    lines.append(f"> Buscando en: `{drift_report_path.as_posix()}`")
+    lines.append("")
+    lines.append(read_if_exists(drift_report_path))
     lines.append("")
 
     lines.append("## 4) Acción recomendada")
@@ -68,15 +78,17 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--bloque", required=True, help="Ruta al bloque (ej. output/bloque_1)")
     parser.add_argument("--salida", required=True, help="Ruta del reporte final MD")
+    parser.add_argument("--dir_reportes", default="reports", help="Directorio donde buscar reportes previos (default: reports)")
     args = parser.parse_args()
 
     bloque_path = Path(args.bloque).resolve()
     output_path = Path(args.salida).resolve()
+    reports_dir = Path(args.dir_reportes).resolve()
 
     if not bloque_path.exists():
         raise SystemExit(f"Bloque no encontrado: {bloque_path}")
 
-    report_md = build_report(bloque_path=bloque_path)
+    report_md = build_report(bloque_path=bloque_path, reports_dir=reports_dir)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(report_md, encoding="utf-8")
@@ -85,3 +97,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

@@ -1,37 +1,60 @@
 # INDEX MAESTRO: Proyecto_automatizaciones
 
-Este documento actúa como el tablero de control principal del proyecto, vinculando los entregables validados con sus fuentes de investigación y estados de ejecución.
+Este documento es el eje central de navegación del repositorio, separando el núcleo metodológico del sistema de los casos de prueba sectoriales.
 
-## 0) Identidad del Proyecto
+## 0) Identidad del Sistema (Core App)
 - **Nombre:** Proyecto_automatizaciones
-- **Foco:** Automatización hiperpersonalizada de backoffice para logística FTL.
-- **Marco Rector:** [ARQ_01_MARCO_RECTOR_REDACCION.md](docs/ARQ_01_MARCO_RECTOR_REDACCION.md)
+- **Propósito:** Sistema general de acompañamiento al emprendedor para la validación y estructuración de modelos de negocio.
+- **Marco Rector de Redacción:** [ARQ_01_MARCO_RECTOR_REDACCION.md](docs/ARQ_01_MARCO_RECTOR_REDACCION.md)
+- **Regla de Oro:** [RULE_NO_SESGO_SECTORIAL_EN_CORE.md](.agent/rules/RULE_NO_SESGO_SECTORIAL_EN_CORE.md)
 
 ---
 
-## 📅 Cronograma de Validación B2B
+## 🧠 BLOQUE I: NÚCLEO METODOLÓGICO (Agnóstico)
 
-| Hito / Entregable | Estado | Ruta del Archivo | Referencia NotebookLM | Notas / Hallazgos |
-| :--- | :--- | :--- | :--- | :--- |
-| **BLOQUE 1: Cimentación** | | | | |
-| 00: Intake de Proyecto | ✅ DONE | [00_intake_proyecto.md](docs/00_intake_proyecto.md) | - | Dolor validado: Doc-to-Cash. |
-| 01: Mapa de Empatía | 🟢 PENDING | `output/bloque_1/01_mapa_empatia.md` | ProyAuto_Sector_Logistica | Pendiente ejecución real tras Dry Run 2. |
-| 02: Canvas de Valor | 🟢 PENDING | `output/bloque_1/02_canvas_valor.md` | ProyAuto_Sector_Logistica | Pendiente ejecución real tras Dry Run 2. |
-| 03: PESTEL Sectorial | 🟢 PENDING | `output/bloque_1/03_pestel.md` | ProyAuto_Sector_Logistica | Pendiente ejecución real tras Dry Run 2. |
-| 04: DAFO Operativo | 🟢 PENDING | `output/bloque_1/04_dafo.md` | ProyAuto_Sector_Logistica | Pendiente ejecución real tras Dry Run 2. |
-| 05: Competencia | 🟢 PENDING | `output/bloque_1/05_competencia.md` | ProyAuto_Rival_Logistica | Pendiente ejecución real tras Dry Run 2. |
-| 06: Benchmarking | 🟢 PENDING | `output/bloque_1/06_benchmarking.md` | ProyAuto_Rival_Logistica | Pendiente ejecución real tras Dry Run 2. |
-| 07: Estrategia Comp. | 🟢 PENDING | `output/bloque_1/07_estrategia_competitiva.md` | ProyAuto_Rival_Logistica | Pendiente ejecución real tras Dry Run 2. |
-| 10: BMC B2B | 🟢 PENDING | `output/bloque_1/10_business_model_canvas.md` | ProyAuto_Rival_Logistica | Pendiente ejecución real tras Dry Run 2. |
-| 99: Resumen Bloque 1 | 🟢 PENDING | `output/bloque_1/99_resumen_bloque_1.md` | ProyAuto_Memoria_Permanente | Pendiente ejecución real tras Dry Run 2. |
+Define la lógica, fases y contratos de datos que aplica a cualquier proyecto de emprendimiento.
+
+### A. Metodología de Fases
+- [Mapa Maestro de Fases](core/fases/00_Mapa_Maestro_Fases.md)
+- [Estructura Oficial de Fases (Plantilla)](core/fases/00_Estructura_Oficial_Fases.md)
+- [Repositorio de las 12 Fases](core/fases/)
+
+### B. Contrato de Datos (DMV)
+- [Tabla Maestra de Campos (DMV)](core/dmv/00_Tabla_maestra_de_campos_DMV.md)
 
 ---
 
-## 🛠️ Zona de Control (Mantenimiento)
-- [x] Purgado de identidad ZAC
-- [x] Esterilización de NotebookLM
-- [x] Validación de Workflow B2B (Dry Run 2)
-- [ ] Implementación de Capa Visual (Streamlit)
+## 🚚 BLOQUE II: CASOS DE PRUEBA Y VALIDACIÓN (Sectores)
 
-## 📁 Archivos de Auditoría Recientes
-- [Reporte Dry Run 2](docs/evidencias/DRY_RUN_2_LOGISTICA_LIMPIA.md)
+Implementaciones específicas utilizadas para testear la robustez del sistema.
+
+### 1. Caso: Logística FTL (Activo)
+*Aislamiento del historial operativo y entregables del sector transporte.*
+
+- **Índice del Caso:** [cases/logistica/README.md](cases/logistica/README.md)
+- **Entregables:** [cases/logistica/output/bloque_1/](cases/logistica/output/bloque_1/)
+- **Evidencias de Ejecución:** [cases/logistica/evidencias/DRY_RUN_2_LOGISTICA_LIMPIA.md](cases/logistica/evidencias/DRY_RUN_2_LOGISTICA_LIMPIA.md)
+- **Documentos de Contexto:** [cases/logistica/docs/](cases/logistica/docs/)
+
+---
+
+## 🛠️ BLOQUE III: GOBERNANZA Y RUNTIME (Mantenimiento)
+
+Control de la arquitectura, migración y herramientas del repositorio.
+
+### A. Estado de la Migración (Fase 1)
+- [Plan Maestro de Migración](output/arquitectura/ARQ_04_plan_de_migracion_del_repositorio.md)
+- [Registro de Aislamiento Caso Logístico (Copia)](output/migracion/05_aislamiento_caso_logistico_fase_copia.md)
+- [Consolidación Final Core Metodológico](output/migracion/07_consolidacion_final_core_metodologico.md)
+
+### B. Inventario y Componentes
+- [Inventario Actual del Repositorio](output/arquitectura/00_inventario_actual_del_repositorio.md)
+- [Mapa de Componentes de la App](output/arquitectura/ARQ_01_mapa_de_componentes_de_la_app.md)
+
+---
+
+## 📁 Zona de Control Reciente
+- [x] Consolidación del Core Metodológico en `core/fases/`
+- [x] Aislamiento del Caso Logístico en `cases/logistica/`
+- [x] Redefinición Agnóstica del Índice Maestro
+- [ ] Ajuste de Scripts de Validación (Siguiente Paso)

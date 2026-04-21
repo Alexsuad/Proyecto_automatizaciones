@@ -3,8 +3,8 @@ scripts/validar_entregables.py
 
 OBJETIVO
 --------
-Validar entregables Markdown en output/ para evitar errores humanos y mantener
-el sistema audit-able (determinista).
+Validar entregables Markdown (tanto en output/ legacy como en cases/) para evitar 
+errores humanos y mantener el sistema audit-able (determinista).
 
 Este script NO escribe contenido. Solo:
 - Revisa estructura obligatoria (Nota de Registro NotebookLM con 5 campos mínimos)
@@ -16,11 +16,12 @@ Este script NO escribe contenido. Solo:
 FORMATO NUEVO (requerido a partir de 2026-03-05):
   notebook_title, notebook_id, hito_note_id, auditoria_note_id, fecha
 
-FORMATO ANTIGUO (compatible pero marcado como warning):
-  notebook_title, notebook_id, note_id, fecha
+USO (NUEVA ARQUITECTURA)
+-----------------------
+python scripts/validar_entregables.py --bloque cases/logistica/output/bloque_1 --salida cases/logistica/reports/VALIDACION.md
 
-USO
----
+USO (LEGACY)
+------------
 python scripts/validar_entregables.py --bloque output/bloque_1 --salida reports/reporte_validacion_bloque_1.md
 """
 
@@ -332,8 +333,8 @@ def build_markdown_report(results: List[File_validation_result], bloque_path: Pa
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--bloque", required=True, help="Ruta al bloque (ej. output/bloque_1)")
-    parser.add_argument("--salida", required=True, help="Ruta del reporte MD (ej. reports/reporte_validacion_bloque_1.md)")
+    parser.add_argument("--bloque", required=True, help="Ruta al bloque a validar (ej. cases/logistica/output/bloque_1)")
+    parser.add_argument("--salida", required=True, help="Ruta del reporte resultante (ej. cases/logistica/reports/VALIDACION.md)")
     args = parser.parse_args()
 
     bloque_path = Path(args.bloque).resolve()

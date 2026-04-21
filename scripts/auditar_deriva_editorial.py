@@ -23,32 +23,25 @@ from typing import List, Dict
 
 
 # ---------------------------------------------------------------------
-# Configuración base (anclas típicas de logística operativa)
+# Perfiles Sectoriales (Desacoplamiento temática)
 # ---------------------------------------------------------------------
 
-ANCHOR_TERMS_DEFAULT = [
-    "CMR", "eCMR", "POD", "albarán", "incidencia", "subcontrata", "peaje",
-    "ventana", "conciliación", "doc-to-cash", "factura", "cobro", "trazabilidad"
-]
-
-# Términos que indican deriva temática real hacia transitarios/aduanas como tema principal
-TERMINOS_RIESGO_CONTEXTUAL = [
-    "DUA", "arancel", "packing list", "incoterm", "despacho aduanero",
-    "operador aduanero", "agente de aduanas", "gestor aduanero"
-]
-
-# Términos de aduanas permitidos en contexto legal (NO generan alerta de deriva)
-# Si 'aduana' aparece junto a estas palabras en una ventana de 200 caracteres, se permite
-CONTEXTO_LEGAL_ADUANAS = [
-    "normativa aduanera", "ley aduanera", "cumplimiento aduanero",
-    "regulación aduanera", "control aduanero", "obligación aduanera",
-    "normativa", "incumplimiento", "cumplimiento", "regulación", "inspección"
-]
-CONTEXTO_LEGAL_REGEX = re.compile(
-    r"(normativa|ley|cumplimiento|regulación|control|inspección|obligación).{0,60}aduan"
-    r"|aduan.{0,60}(normativa|ley|cumplimiento|regulación|control|inspección|obligación)",
-    re.IGNORECASE
-)
+DEFAULT_SECTOR_PROFILES = {
+    "logistica": {
+        "anchor_terms": [
+            "CMR", "eCMR", "POD", "albarán", "incidencia", "subcontrata", "peaje",
+            "ventana", "conciliación", "doc-to-cash", "factura", "cobro", "trazabilidad"
+        ],
+        "risk_terms": [
+            "DUA", "arancel", "packing list", "incoterm", "despacho aduanero",
+            "operador aduanero", "agente de aduanas", "gestor aduanero"
+        ],
+        "legal_context_pattern": (
+            r"(normativa|ley|cumplimiento|regulación|control|inspección|obligación).{0,60}aduan"
+            r"|aduan.{0,60}(normativa|ley|cumplimiento|regulación|control|inspección|obligación)"
+        )
+    }
+}
 
 
 @dataclass
@@ -62,16 +55,18 @@ class Drift_result:
 
 def read_option_active(option_file: Path) -> str:
     """
-    Lee docs/OPCION_ACTIVA.md y retorna el contenido.
+    Lee el archivo de opción activa (por defecto docs/OPCION_ACTIVA.md).
     """
     if not option_file.exists():
-        raise SystemExit(f"No existe {option_file}. Debes crear docs/OPCION_ACTIVA.md primero.")
+        # Fallback silencioso si no existe para no romper el script si se parametriza mal,
+        # pero avisando que el nicho activo no se pudo determinar.
+        return "Opción activa (nicho): DESCONOCIDO"
     return option_file.read_text(encoding="utf-8", errors="replace")
 
 
 def detect_active_nicho(option_text: str) -> str:
     """
-    Extrae el nicho activo (TRANSPORTE / TRANSITARIOS / OTRO) de forma simple.
+    Extrae el nicho activo de forma simple.
     """
     m = re.search(r"Opción activa\s*\(nicho\)\s*:\s*(.+)", option_text, re.IGNORECASE)
     if not m:
@@ -81,7 +76,7 @@ def detect_active_nicho(option_text: str) -> str:
 
 def count_term_hits(text: str, terms: List[str]) -> Dict[str, int]:
     """
-    Cuenta ocurrencias por término (case-insensitive, con límites de palabra).
+    Cuenta ocurrencias por término.
     """
     hits: Dict[str, int] = {}
     for t in terms:
@@ -90,43 +85,38 @@ def count_term_hits(text: str, terms: List[str]) -> Dict[str, int]:
     return hits
 
 
-def audit_one_file(file_path: Path, active_nicho: str) -> Drift_result:
+def audit_one_file(file_path: Path, active_nicho: str, profile: dict) -> Drift_result:
     text = file_path.read_text(encoding="utf-8", errors="replace")
 
-    anchor_hits = count_term_hits(text, ANCHOR_TERMS_DEFAULT)
+    anchor_terms = profile.get("anchor_terms", [])
+    risk_terms = profile.get("risk_terms", [])
+    legal_pattern_str = profile.get("legal_context_pattern", "")
+
+    anchor_hits = count_term_hits(text, anchor_terms)
 
     contextual_terms = []
+    # En logística, la deriva es hacia aduanas cuando el nicho es transporte
     if "TRANSPORTE" in active_nicho:
-        contextual_terms = TERMINOS_RIESGO_CONTEXTUAL
+        contextual_terms = risk_terms
 
-    # Conteo bruto de términos de riesgo
+    # Conteo de riesgo y filtrado por contexto legal si existe patrón
     raw_contextual_hits = count_term_hits(text, contextual_terms) if contextual_terms else {}
-
-    # Filtrar 'aduana' si aparece únicamente en contexto legal (no como tema principal)
-    # Si el texto tiene aduana pero TODAS las apariciones son en contexto legal, no se alerta
     contextual_hits: dict = {}
+    
+    legal_regex = re.compile(legal_pattern_str, re.IGNORECASE) if legal_pattern_str else None
+
     for term, count in raw_contextual_hits.items():
-        if term.lower() == "aduana" and count > 0:
-            # Verificar si la mención es de contexto legal
-            legal_matches = len(CONTEXTO_LEGAL_REGEX.findall(text))
-            # Mención total de aduana
+        if term.lower() == "aduana" and count > 0 and legal_regex:
+            legal_matches = len(legal_regex.findall(text))
             aduana_pattern = re.compile(r"\baduana\b", re.IGNORECASE)
             total_aduana = len(aduana_pattern.findall(text))
-            if legal_matches >= total_aduana:
-                # Todas las menciones son en contexto legal — no es deriva
-                contextual_hits[term] = 0
-            else:
-                # Hay menciones fuera de contexto legal — posible deriva
-                contextual_hits[term] = total_aduana - legal_matches
+            contextual_hits[term] = max(0, total_aduana - legal_matches)
         else:
             contextual_hits[term] = count
 
-    # Regla simple:
-    # - riesgo de genérico si tiene menos de 5 hits totales de términos ancla
+    # Reglas de riesgo
     total_anchor_hits = sum(anchor_hits.values())
     is_generic_risk = total_anchor_hits < 5
-
-    # - riesgo contextual si aparece cualquier término de riesgo (después del filtro legal) al menos 1 vez
     is_contextual_risk = any(v > 0 for v in contextual_hits.values())
 
     return Drift_result(
@@ -138,16 +128,17 @@ def audit_one_file(file_path: Path, active_nicho: str) -> Drift_result:
     )
 
 
-def build_markdown_report(results: List[Drift_result], bloque_path: Path, active_nicho: str) -> str:
+def build_markdown_report(results: List[Drift_result], bloque_path: Path, active_nicho: str, sector: str) -> str:
     lines: List[str] = []
     lines.append("# Reporte Anti-Deriva Editorial")
     lines.append("")
     lines.append(f"- **Bloque revisado:** `{bloque_path.as_posix()}`")
+    lines.append(f"- **Sector configurado:** `{sector}`")
     lines.append(f"- **Opción activa detectada:** `{active_nicho}`")
     lines.append("")
     lines.append("Reglas usadas:")
-    lines.append("- Riesgo de genérico: menos de 5 menciones totales de términos ancla.")
-    lines.append("- Riesgo contextual: aparece cualquier término de riesgo contextual para la opción activa.")
+    lines.append("- Riesgo de genérico: menos de 5 menciones totales de términos ancla del sector.")
+    lines.append("- Riesgo contextual: aparece cualquier término de riesgo para la opción activa.")
     lines.append("")
     lines.append("---")
     lines.append("")
@@ -166,7 +157,6 @@ def build_markdown_report(results: List[Drift_result], bloque_path: Path, active
         total_anchor = sum(r.anchor_hits.values())
         lines.append(f"- **Total términos ancla:** {total_anchor}")
         lines.append("- **Detalle anclas (top):**")
-        # Mostrar solo los que tienen hits, para no llenar el reporte
         for term, count in sorted(r.anchor_hits.items(), key=lambda x: x[1], reverse=True):
             if count > 0:
                 lines.append(f"  - {term}: {count}")
@@ -181,7 +171,7 @@ def build_markdown_report(results: List[Drift_result], bloque_path: Path, active
                     lines.append(f"  - {term}: {count}")
             if contextual_total > 0:
                 lines.append("")
-                lines.append("  > **NOTA:** Aparecen términos de aduanas (DUA, aduana, packing list…). Verificar si aportan al objetivo del documento según Opción Activa y el tipo de entregable.")
+                lines.append(f"  > **NOTA:** Aparecen menciones de riesgo específicas para `{sector}`. Verificar si corresponden al objetivo del documento.")
 
         lines.append("")
         lines.append("---")
@@ -194,19 +184,26 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--bloque", required=True, help="Ruta al bloque (ej. output/bloque_1)")
     parser.add_argument("--salida", required=True, help="Ruta del reporte MD (ej. reports/reporte_deriva_bloque_1.md)")
+    parser.add_argument("--sector", default="logistica", help="Perfil sectorial a usar (default: logistica)")
+    parser.add_argument("--opcion_activa", default="docs/OPCION_ACTIVA.md", help="Ruta al archivo OPCION_ACTIVA.md")
     args = parser.parse_args()
 
     bloque_path = Path(args.bloque).resolve()
     output_path = Path(args.salida).resolve()
+    option_file = Path(args.opcion_activa).resolve()
 
-    option_file = Path("docs/OPCION_ACTIVA.md").resolve()
+    sector = args.sector.lower()
+    profile = DEFAULT_SECTOR_PROFILES.get(sector, {})
+    if not profile and sector != "desconocido":
+        print(f"Advertencia: Sector '{sector}' no tiene perfil interno. Se usará auditoría básica.")
+
     option_text = read_option_active(option_file)
     active_nicho = detect_active_nicho(option_text)
 
     md_files = sorted(bloque_path.glob("*.md"))
-    results = [audit_one_file(fp, active_nicho=active_nicho) for fp in md_files]
+    results = [audit_one_file(fp, active_nicho=active_nicho, profile=profile) for fp in md_files]
 
-    report_md = build_markdown_report(results, bloque_path=bloque_path, active_nicho=active_nicho)
+    report_md = build_markdown_report(results, bloque_path=bloque_path, active_nicho=active_nicho, sector=sector)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(report_md, encoding="utf-8")
     print(f"OK: reporte generado en {output_path}")
@@ -214,3 +211,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

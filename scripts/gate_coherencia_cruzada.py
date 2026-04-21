@@ -249,13 +249,20 @@ def main() -> None:
         help="Ruta al bloque (ej. output/bloque_1)"
     )
     parser.add_argument(
-        "--salida", default="reports/reporte_coherencia_cruzada_bloque_1.md",
-        help="Ruta del reporte MD de salida"
+        "--salida", 
+        help="Ruta del reporte MD de salida (opcional, se deriva del nombre del bloque por defecto)"
     )
     args = parser.parse_args()
 
     bloque_path = Path(args.bloque).resolve()
-    output_path = Path(args.salida).resolve()
+
+    # Lógica de salida dinámica para evitar hardcoding
+    if args.salida:
+        output_path = Path(args.salida).resolve()
+    else:
+        # Si no se especifica salida, generamos una en reports/ basada en el nombre del bloque
+        block_name = bloque_path.name
+        output_path = Path(f"reports/reporte_coherencia_cruzada_{block_name}.md").resolve()
 
     if not bloque_path.exists():
         raise SystemExit(f"Bloque no encontrado: {bloque_path}")
@@ -263,8 +270,10 @@ def main() -> None:
     alertas, log = analizar_bloque(bloque_path)
     report_md = build_markdown_report(alertas, log, bloque_path)
 
+    # Asegurar que el directorio de salida existe
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(report_md, encoding="utf-8")
+
 
     if alertas:
         print(f"⚠️  {len(alertas)} alerta(s) de incoherencia detectada(s). Reporte en: {output_path}")
