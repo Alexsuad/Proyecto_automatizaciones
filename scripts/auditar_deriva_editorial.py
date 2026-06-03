@@ -1,19 +1,12 @@
-"""
-scripts/auditar_deriva_editorial.py
-
-OBJETIVO
---------
-Detectar "deriva editorial" (documentos que se vuelven genéricos o se van a temas
-secundarios que no corresponden a la opción activa).
-
-Este script NO corrige contenido. Solo marca riesgos.
-
-USO
----
-python scripts/auditar_deriva_editorial.py --bloque output/bloque_1 --salida reports/reporte_deriva_bloque_1.md
-"""
+# File: scripts/auditar_deriva_editorial.py
+# ──────────────────────────────────────────────────────────────────────
+# Propósito: Detectar desvíos temáticos o pérdida de especificidad sectorial
+#            (deriva editorial) comparando contra la opción activa del nicho.
+# Rol: Script de auditoría de consistencia de contenidos markdown generados.
+# ──────────────────────────────────────────────────────────────────────
 
 from __future__ import annotations
+
 
 import argparse
 import re

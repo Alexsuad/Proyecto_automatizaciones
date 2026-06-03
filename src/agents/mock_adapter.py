@@ -1,6 +1,13 @@
+# File: src/agents/mock_adapter.py
+# ──────────────────────────────────────────────────────────────────────
+# Propósito: Mock del adaptador de agente de IA para pruebas.
+# Rol: Simular respuestas de LLM sin requerir llamadas externas reales.
+# ──────────────────────────────────────────────────────────────────────
+
 import json
 from .base_adapter import BaseAgentAdapter
 from .models import AgentRequest
+
 
 class MockAgentAdapter(BaseAgentAdapter):
     def __init__(self):

@@ -1,22 +1,11 @@
-"""
-scripts/generar_reporte_bloque.py
-
-OBJETIVO
---------
-Generar un reporte final de cierre de bloque:
-- Lista de archivos del bloque
-- Resultado de validación determinista (si existe el reporte previo)
-- Resultado de deriva editorial (si existe el reporte previo)
-- Siguiente acción recomendada: READY_FOR_REVIEW / BLOCKED
-
-Este script NO cambia el índice. Solo genera reporte consolidado.
-
-USO
----
-python scripts/generar_reporte_bloque.py --bloque output/bloque_1 --salida reports/REPORTE_CIERRE_BLOQUE_1.md
-"""
+# File: scripts/generar_reporte_bloque.py
+# ──────────────────────────────────────────────────────────────────────
+# Propósito: Generar un reporte final unificado y consolidado de cierre de bloque.
+# Rol: Consolidar y dar visibilidad a los análisis de validación y deriva de entregables.
+# ──────────────────────────────────────────────────────────────────────
 
 from __future__ import annotations
+
 
 import argparse
 from pathlib import Path

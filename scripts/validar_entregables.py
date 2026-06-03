@@ -1,31 +1,11 @@
-"""
-scripts/validar_entregables.py
-
-OBJETIVO
---------
-Validar entregables Markdown (tanto en output/ legacy como en cases/) para evitar 
-errores humanos y mantener el sistema audit-able (determinista).
-
-Este script NO escribe contenido. Solo:
-- Revisa estructura obligatoria (Nota de Registro NotebookLM con 5 campos mínimos)
-- Acepta FORMATO NUEVO (hito_note_id + auditoria_note_id) y FORMATO ANTIGUO (note_id)
-- Valida formatos (UUID, fecha)
-- Detecta riesgos (HECHO con números sin "Fuente sólida")
-- Detecta presencia mínima de métricas/KPIs (heurística simple)
-
-FORMATO NUEVO (requerido a partir de 2026-03-05):
-  notebook_title, notebook_id, hito_note_id, auditoria_note_id, fecha
-
-USO (NUEVA ARQUITECTURA)
------------------------
-python scripts/validar_entregables.py --bloque cases/logistica/output/bloque_1 --salida cases/logistica/reports/VALIDACION.md
-
-USO (LEGACY)
-------------
-python scripts/validar_entregables.py --bloque output/bloque_1 --salida reports/reporte_validacion_bloque_1.md
-"""
+# File: scripts/validar_entregables.py
+# ──────────────────────────────────────────────────────────────────────
+# Propósito: Validar la estructura y trazabilidad NotebookLM de los entregables markdown.
+# Rol: Asegurar el cumplimiento de calidad determinista antes de cerrar fases o bloques.
+# ──────────────────────────────────────────────────────────────────────
 
 from __future__ import annotations
+
 
 import argparse
 import re

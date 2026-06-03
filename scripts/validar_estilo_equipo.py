@@ -1,7 +1,15 @@
+# File: scripts/validar_estilo_equipo.py
+# ──────────────────────────────────────────────────────────────────────
+# Propósito: Validar que el tono, prudencia y estilo de voz del equipo
+#            se respeten en los documentos (Gate 0).
+# Rol: Linter y script de validación de estilo y voz institucional.
+# ──────────────────────────────────────────────────────────────────────
+
 import argparse
 import re
 from pathlib import Path
 from typing import List, Dict
+
 
 BANNED_WORDS = [
     r"modo militar", r"misión cumplida", r"letal\w*", r"quirúrg\w*",
