@@ -168,6 +168,32 @@ notes:
 | `owner`                     |  string | Responsable lógico del artefacto.                                             |
 | `notes`                     |  string | Restricciones, aclaraciones o motivo de la clasificación.                     |
 
+### Formato permitido de `path`
+
+En la versión v1, `path` acepta:
+
+1. Rutas exactas relativas a la raíz del repositorio.
+2. Patrones glob simples con `*` y `**`.
+
+No se permiten expresiones regulares en v1.
+
+Ejemplos válidos:
+
+```yaml
+path: "src/"
+path: "docs/specs/"
+path: "reports/tmp/"
+path: "cases/tmp_*/"
+path: "**/__pycache__/"
+```
+
+Ejemplos no válidos:
+
+```yaml
+path: "^src/.*$"
+path: "(docs|core)/.*"
+```
+
 ---
 
 # 5. Valores permitidos
@@ -385,8 +411,10 @@ can_regenerate: false
 Ejemplo:
 
 ```text
-core/templates/case_template/
+templates/case_template/
 ```
+
+La sede canónica de plantillas reutilizables es `templates/`. La ruta `core/templates/` queda reservada como legacy/no recomendada y no debe usarse como fuente principal de plantillas de caso.
 
 ## 7.4 `PROJECT_IDENTITY`
 
@@ -701,6 +729,8 @@ Reglas:
 * requiere decisión humana;
 * bloquea Plan B si aparece entre candidatos de extracción.
 
+Para Plan B, `LEGACY_OR_CONTAMINATED` siempre bloquea la extracción de base limpia, aunque tenga `copy_policy: ask_before_copy`. La política `ask_before_copy` solo aplica a decisiones humanas fuera de Plan B, como retención externa, migración manual o revisión histórica documentada. Nunca autoriza copiar legacy como parte de una base limpia reutilizable.
+
 Valores esperados:
 
 ```yaml
@@ -865,7 +895,7 @@ Un validador futuro del manifiesto debe comprobar como mínimo:
 * `copy_policy` usa un valor permitido;
 * campos booleanos son booleanos reales;
 * `owner` no está vacío;
-* `notes` no está vacío en ningún artefacto, porque es un campo obligatorio por esquema. Si `requires_audit: true`, el campo `notes` debe detallar obligatoriamente las razones de la auditoría y el protocolo de revisión humana aplicable.
+* `notes` debe existir y no estar vacío en todos los artefactos. Para artefactos simples de bajo riesgo se permite una nota breve (ej. "OK", "Ruta estándar del framework" o equivalente). Si `requires_audit: true`, `copy_policy: ask_before_copy` o `copy_policy: regenerate`, `notes` debe detallar la razón del control y el criterio de revisión humana aplicable.
 
 ## 9.3 Validaciones de coherencia
 
@@ -962,7 +992,7 @@ DUPLICATE_PATH_PATTERN
 ## 11.2 Plantilla de caso
 
 ```yaml
-- path: "core/templates/case_template/"
+- path: "templates/case_template/"
   category: "TEMPLATE_CASE"
   copy_policy: "copy"
   allowed_in_framework: true
@@ -1183,7 +1213,11 @@ Plan B queda bloqueado si:
 * hay secretos;
 * hay memoria de proyecto viva entre los candidatos;
 * hay outputs reales entre los candidatos;
-* hay material legacy marcado para copia.
+* hay material legacy marcado para copia o con `copy_policy: ask_before_copy`.
+
+Regla:
+
+Para Plan B, cualquier artefacto `LEGACY_OR_CONTAMINATED` bloquea la extracción de base limpia de forma absoluta, independientemente de su `copy_policy`.
 
 Regla:
 
