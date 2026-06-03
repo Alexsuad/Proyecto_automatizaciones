@@ -1,13 +1,22 @@
 # Skill: audit_repo_baseline
 
 ## Propósito
-Auditar de forma no destructiva si el repositorio actual puede operar como `framework_mother` antes de proceder con el diseño y creación del manifiesto de artefactos (`artifact_manifest.yml`).
+Auditar de forma no destructiva el baseline técnico del repositorio `framework_mother`, verificando identidad, manifiesto de artefactos, especificaciones base, presencia de zonas legacy, zonas temporales y elementos prohibidos antes de tomar decisiones de gobernanza, aprobación documental o saneamiento físico.
+
+Este skill:
+- ejecuta y analiza el auditor técnico baseline;
+- usa como apoyo `python scripts/audit_repo_baseline.py`;
+- valida identidad, manifiesto, SPECs base, zonas legacy, zonas temporales y elementos prohibidos;
+- no sustituye la auditoría documental de gobernanza;
+- no aprueba ADRs ni SPECs;
+- no autoriza saneamiento físico;
+- no modifica archivos.
 
 ## Cuándo usar este skill
 Este skill debe invocarse obligatoriamente antes de:
-*   Crear o modificar el archivo `artifact_manifest.yml` real.
-*   Clasificar el baseline de archivos y carpetas del repositorio madre.
-*   Ejecutar cualquier proceso de limpieza física de directorios.
+*   Realizar cambios sobre la parametrización de `artifact_manifest.yml` o `repo_identity.yml`.
+*   Verificar de manera automática la integridad técnica del baseline.
+*   Diseñar o planificar cualquier proceso de saneamiento físico de directorios.
 *   Iniciar una extracción de base limpia (Plan B).
 *   Preparar auditorías de conformidad sobre la estructura del framework.
 
@@ -77,9 +86,9 @@ El reporte final presentado al Gatekeeper y al humano debe estructurarse obligat
 *   No borrar archivos ni carpetas.
 *   No mover archivos.
 *   No limpiar ni vaciar directorios legacy (`docs_base/`, `output/`).
-*   No crear ni modificar `artifact_manifest.yml`.
+*   No crear, sobrescribir ni modificar `artifact_manifest.yml` durante la auditoría.
 *   No crear, sobrescribir ni modificar `repo_identity.yml`.
-*   No modificar especificaciones (`SPEC-001`, `SPEC-002`, `SPEC-003`).
+*   No modificar especificaciones (`SPEC-001`, `SPEC-002`, `SPEC-003`, `SPEC-004`, `SPEC-005`).
 *   No realizar `git add`.
 *   No realizar commits ni push.
 

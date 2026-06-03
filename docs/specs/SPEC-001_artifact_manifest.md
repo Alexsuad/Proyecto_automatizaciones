@@ -242,15 +242,25 @@ skip
 generate_empty
 regenerate
 ask_before_copy
+exclude
 ```
 
 Definiciones:
 
 * `copy`: se copia tal como está.
-* `skip`: no se copia.
+* `skip`: no se copia al proyecto vivo por no formar parte del scaffolding base, pero su existencia en el entorno puede ser legítima.
 * `generate_empty`: se crea una estructura o archivo vacío equivalente.
 * `regenerate`: se vuelve a generar mediante proceso controlado.
 * `ask_before_copy`: requiere confirmación humana antes de copiar.
+* `exclude`: no se copia bajo ninguna circunstancia durante operaciones automáticas de scaffolding. Se usa para zonas prohibidas, contaminadas, locales, secretas, temporales o legacy que deben quedar fuera del proyecto vivo y requerir bloqueo preventivo o revisión humana antes de cualquier tratamiento posterior.
+
+### 5.3.1. Diferencia entre skip y exclude:
+*   **skip:** significa omisión normal del scaffolding, sin implicar que el artefacto sea peligroso o esté contaminado (ej. reportes históricos, inputs del usuario o evidencias).
+*   **exclude:** significa exclusión fuerte por riesgo, contaminación sectorial, secreto local, temporalidad, legado o incompatibilidad con el framework madre (ej. carpetas de desarrollo locales, secretos `.env` o código en cuarentena legacy).
+
+### 5.3.2. Nota de compatibilidad operativa:
+La incorporación de la directiva `exclude` al contrato de la `SPEC-001` no autoriza saneamientos físicos, borrados, movimientos de carpetas ni cambios de runtime en el repositorio. Solo normaliza un valor de política de copiado ya utilizado de facto por `artifact_manifest.yml` y definido lógicamente por `SPEC-004`.
+
 
 ## 5.4 `owner`
 
