@@ -1,8 +1,101 @@
 # File: .gitignore
-# Propósito: Excluir basura técnica del control de versiones
+# Propósito:
+# Excluir archivos locales, temporales, privados o generados automáticamente
+# para mantener limpio el control de versiones del proyecto.
 
+# ============================================================
+# 1. Entornos virtuales de Python
+# ============================================================
 .venv/
+venv/
+env/
+ENV/
+
+# ============================================================
+# 2. Caché y archivos compilados de Python
+# ============================================================
 __pycache__/
+*.py[cod]
 *.pyc
 *.pyo
+*.pyd
+*$py.class
+
+# ============================================================
+# 3. Variables de entorno y archivos sensibles
+# ============================================================
+.env
+.env.*
+!.env.example
+
+# ============================================================
+# 4. Cachés de pruebas, linters y type checkers
+# ============================================================
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# ============================================================
+# 5. Builds, paquetes y metadatos de distribución
+# ============================================================
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ============================================================
+# 6. Archivos temporales y logs locales
+# ============================================================
+*.log
+*.tmp
+*.temp
+tmp/
+temp/
+.cache/
+
+# ============================================================
+# 7. Archivos del sistema operativo
+# ============================================================
 .DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================================================
+# 8. Editores e IDEs
+# ============================================================
+.vscode/
+.idea/
+
+# ============================================================
+# 9. Trabajo privado local
+# ============================================================
+_trabajo_privado/
+
+# ============================================================
+# 10. Artefactos locales del sistema agéntico
+# ============================================================
+.harness/
+.local_state/
+.local_memory/
+*.local.json
+*.local.yml
+*.local.yaml
+
+# ============================================================
+# 11. Artefactos temporales de pruebas y validadores locales
+# ============================================================
+cases/logistica/*_test.json
+cases/logistica/reports/reporte_*.md
+reports/reporte_*.md
+
+# ============================================================
+# 12. Casos temporales y workspace privado de casos reales
+# ============================================================
+cases/tmp_*/
+_workspace_cases/
+cases/*/reports/tmp/
