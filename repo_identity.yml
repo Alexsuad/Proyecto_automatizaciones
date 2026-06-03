@@ -1,0 +1,30 @@
+identity_version: "1.0"
+repo_id: "proyecto_automatizaciones"
+repo_name: "Proyecto Automatizaciones"
+repo_role: "framework_mother"
+repo_status: "active"
+repo_owner: "equipo_tecnico"
+
+created_from: null
+framework_source: null
+framework_version: null
+
+contains_real_data: false
+
+allows_project_creation: true
+allows_framework_updates: false
+allows_case_data: false
+allows_artifact_generation: false
+allows_cleanup: false
+allows_extraction: false
+allows_retention_export: false
+
+requires_human_approval_for:
+  - cleanup
+  - extraction
+  - retention_export
+  - role_change
+  - manifest_change
+  - destructive_operation
+
+notes: "Repositorio madre limpio del framework Proyecto_automatizaciones. No contiene datos reales de proyectos y actúa como base normativa para creación controlada de proyectos vivos."
