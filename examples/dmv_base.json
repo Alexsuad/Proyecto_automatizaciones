@@ -1,0 +1,29 @@
+{
+  "project_metadata": {
+    "name": "Proyecto Base",
+    "sector": "General"
+  },
+  "phase_control": {
+    "F01": { "status": "IDLE" },
+    "F02": { "status": "IDLE" },
+    "F03": { "status": "IDLE" },
+    "F04": { "status": "IDLE" },
+    "F05": { "status": "IDLE" },
+    "F06": { "status": "IDLE" },
+    "F07": { "status": "IDLE" },
+    "F08": { "status": "IDLE" },
+    "F09": { "status": "IDLE" },
+    "F10": { "status": "IDLE" },
+    "F11": { "status": "IDLE" },
+    "F12": { "status": "IDLE" }
+  },
+  "knowledge_base": {},
+  "risk_board": [],
+  "audit_log": [
+    {
+      "event": "INITIALIZATION",
+      "timestamp": "2026-04-21T00:00:00Z",
+      "details": "DMV Seed created"
+    }
+  ]
+}

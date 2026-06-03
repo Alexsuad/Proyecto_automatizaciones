@@ -92,6 +92,7 @@ _trabajo_privado/
 cases/logistica/*_test.json
 cases/logistica/reports/reporte_*.md
 reports/reporte_*.md
+cases/integration/dmv_f01_integrated.json
 
 # ============================================================
 # 12. Casos temporales y workspace privado de casos reales
