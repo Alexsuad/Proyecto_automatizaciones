@@ -1,0 +1,209 @@
+manifest_version: "1.0"
+manifest_status: "draft"
+repo_role: "framework_mother"
+
+generated_for_repo: "proyecto_automatizaciones"
+generated_from_identity: "repo_identity.yml"
+created_by: "equipo_tecnico"
+purpose: "Clasificación defensiva inicial de artefactos del repositorio madre limpio."
+
+notes: "Manifiesto inicial defensivo. Las zonas legacy, temporales o sectoriales quedan excluidas de copia y requieren auditoría humana antes de cualquier migración o reutilización."
+
+artifacts:
+  - path: "repo_identity.yml"
+    category: "FRAMEWORK_CONFIG"
+    copy_policy: "copy"
+    allowed_in_framework: true
+    contains_real_data: false
+    can_regenerate: false
+    requires_audit: false
+    notes: "Identidad operativa del repositorio madre."
+
+  - path: "docs/adrs/"
+    category: "FRAMEWORK_BASE"
+    copy_policy: "copy"
+    allowed_in_framework: true
+    contains_real_data: false
+    can_regenerate: false
+    requires_audit: false
+    notes: "Decisiones arquitectónicas aprobadas del framework."
+
+  - path: "docs/specs/"
+    category: "FRAMEWORK_BASE"
+    copy_policy: "copy"
+    allowed_in_framework: true
+    contains_real_data: false
+    can_regenerate: false
+    requires_audit: false
+    notes: "Especificaciones técnicas aprobadas del framework."
+
+  - path: ".agent/"
+    category: "FRAMEWORK_CONFIG"
+    copy_policy: "copy"
+    allowed_in_framework: true
+    contains_real_data: false
+    can_regenerate: false
+    requires_audit: true
+    notes: "Configuración y skills agénticos del framework. Requiere auditoría para evitar instrucciones peligrosas."
+
+  - path: "src/"
+    category: "FRAMEWORK_BASE"
+    copy_policy: "copy"
+    allowed_in_framework: true
+    contains_real_data: false
+    can_regenerate: false
+    requires_audit: true
+    notes: "Runtime técnico reutilizable del framework."
+
+  - path: "scripts/"
+    category: "FRAMEWORK_BASE"
+    copy_policy: "copy"
+    allowed_in_framework: true
+    contains_real_data: false
+    can_regenerate: false
+    requires_audit: true
+    notes: "Scripts técnicos del framework. Deben ser auditados antes de reutilización o ejecución en otros repositorios."
+
+  - path: "core/"
+    category: "FRAMEWORK_BASE"
+    copy_policy: "copy"
+    allowed_in_framework: true
+    contains_real_data: false
+    can_regenerate: false
+    requires_audit: true
+    notes: "Base metodológica del framework. Subrutas legacy como core/templates/ deben tratarse con cautela."
+
+  - path: "examples/"
+    category: "SYNTHETIC_EXAMPLES"
+    copy_policy: "copy"
+    allowed_in_framework: true
+    contains_real_data: false
+    can_regenerate: true
+    requires_audit: true
+    notes: "Ejemplos sintéticos o fixtures. Deben mantenerse libres de datos reales."
+
+  - path: "pyproject.toml"
+    category: "FRAMEWORK_CONFIG"
+    copy_policy: "copy"
+    allowed_in_framework: true
+    contains_real_data: false
+    can_regenerate: false
+    requires_audit: false
+    notes: "Configuración de proyecto Python."
+
+  - path: "uv.lock"
+    category: "FRAMEWORK_CONFIG"
+    copy_policy: "copy"
+    allowed_in_framework: true
+    contains_real_data: false
+    can_regenerate: true
+    requires_audit: false
+    notes: "Lockfile de dependencias."
+
+  - path: ".gitignore"
+    category: "FRAMEWORK_CONFIG"
+    copy_policy: "copy"
+    allowed_in_framework: true
+    contains_real_data: false
+    can_regenerate: false
+    requires_audit: false
+    notes: "Reglas de exclusión del repositorio."
+
+  - path: "README.md"
+    category: "FRAMEWORK_BASE"
+    copy_policy: "copy"
+    allowed_in_framework: true
+    contains_real_data: false
+    can_regenerate: false
+    requires_audit: true
+    notes: "Documento de entrada del repositorio. Requiere auditoría si contiene orientación estratégica sensible."
+
+  - path: "docs_base/"
+    category: "LEGACY_OR_CONTAMINATED"
+    copy_policy: "exclude"
+    allowed_in_framework: false
+    contains_real_data: true
+    can_regenerate: false
+    requires_audit: true
+    notes: "Zona legacy pendiente de decisión. No copiar, migrar ni usar como fuente normativa sin auditoría humana explícita."
+
+  - path: "output/"
+    category: "LEGACY_OR_CONTAMINATED"
+    copy_policy: "exclude"
+    allowed_in_framework: false
+    contains_real_data: true
+    can_regenerate: false
+    requires_audit: true
+    notes: "Salidas históricas o de trabajo local. No copiar ni tratar como framework limpio."
+
+  - path: "cases/logistica/"
+    category: "LEGACY_OR_CONTAMINATED"
+    copy_policy: "exclude"
+    allowed_in_framework: false
+    contains_real_data: true
+    can_regenerate: false
+    requires_audit: true
+    notes: "Caso sectorial histórico usado en pruebas. No copiar a nuevos proyectos ni usar como baseline."
+
+  - path: "cases/tmp_*/"
+    category: "TEMP_RUNTIME"
+    copy_policy: "exclude"
+    allowed_in_framework: false
+    contains_real_data: true
+    can_regenerate: true
+    requires_audit: false
+    notes: "Casos temporales locales. Deben permanecer fuera de Git y fuera de cualquier baseline reutilizable."
+
+  - path: "core/templates/"
+    category: "LEGACY_OR_CONTAMINATED"
+    copy_policy: "exclude"
+    allowed_in_framework: false
+    contains_real_data: false
+    can_regenerate: true
+    requires_audit: true
+    notes: "Ruta transicional. SPEC-002 define templates/ como sede canónica futura de plantillas."
+
+  - path: "reports/tmp/"
+    category: "TEMP_RUNTIME"
+    copy_policy: "exclude"
+    allowed_in_framework: false
+    contains_real_data: true
+    can_regenerate: true
+    requires_audit: false
+    notes: "Reportes temporales de ejecución. No deben versionarse."
+
+  - path: "_workspace_cases/"
+    category: "TEMP_RUNTIME"
+    copy_policy: "exclude"
+    allowed_in_framework: false
+    contains_real_data: true
+    can_regenerate: true
+    requires_audit: false
+    notes: "Workspace privado de casos reales. Debe permanecer fuera de Git."
+
+  - path: ".env"
+    category: "LOCAL_SECRET"
+    copy_policy: "exclude"
+    allowed_in_framework: false
+    contains_real_data: true
+    can_regenerate: false
+    requires_audit: true
+    notes: "Archivo local de secretos. Nunca debe versionarse."
+
+  - path: ".venv/"
+    category: "TEMP_RUNTIME"
+    copy_policy: "exclude"
+    allowed_in_framework: false
+    contains_real_data: false
+    can_regenerate: true
+    requires_audit: false
+    notes: "Entorno virtual local. Nunca debe versionarse."
+
+  - path: "__pycache__/"
+    category: "TEMP_RUNTIME"
+    copy_policy: "exclude"
+    allowed_in_framework: false
+    contains_real_data: false
+    can_regenerate: true
+    requires_audit: false
+    notes: "Caché de Python. Nunca debe versionarse."
