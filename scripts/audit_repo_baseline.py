@@ -188,10 +188,22 @@ def run_audit():
     # C. Estado esperado del manifiesto de artefactos
     manifest_path = "artifact_manifest.yml"
     if os.path.exists(manifest_path):
-        warnings.append("MANIFEST_EXISTS_PREMATURELY: artifact_manifest.yml ya existe en esta fase del baseline.")
-        checks["manifest"] = "PRESENT"
+        manifest_data = parse_yaml_minimal(manifest_path)
+        if not manifest_data:
+            blocking_errors.append("INVALID_ARTIFACT_MANIFEST: El archivo existe pero está vacío o no se puede leer.")
+            result = "FAIL"
+            checks["manifest"] = "INVALID"
+        else:
+            checks["manifest"] = "PRESENT"
+            info.append("ARTIFACT_MANIFEST_PRESENT: artifact_manifest.yml existe en la raíz del repositorio.")
+            
+            # Validación de coincidencia de rol
+            role = manifest_data.get("repo_role")
+            if role != "framework_mother":
+                blocking_errors.append(f"ROLE_MANIFEST_MISMATCH: repo_role en manifest es '{role}', esperado 'framework_mother'.")
+                result = "FAIL"
     else:
-        warnings.append("MANIFEST_NOT_FOUND: artifact_manifest.yml no existe (esperable en esta fase del MVP).")
+        warnings.append("MANIFEST_NOT_FOUND: artifact_manifest.yml no existe.")
         checks["manifest"] = "MISSING"
 
     # D. Zonas legacy o pendientes
